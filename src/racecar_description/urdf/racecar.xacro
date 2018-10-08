@@ -1,6 +1,16 @@
 <?xml version="1.0"?>
 <robot name="racecar" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+  <!-- Gazebo plugins -->
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/racecar</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+    </plugin>
+  </gazebo>
+
+
   <xacro:include filename="$(find racecar_description)/urdf/macros.xacro" />
 
   <!-- Add chassis and it's inertia link -->
