@@ -37,7 +37,7 @@ def vels(speed,turn):
 
 if __name__=="__main__":
   settings = termios.tcgetattr(sys.stdin)
-  pub = rospy.Publisher('/vesc/ackermann_cmd_mux/input/teleop', AckermannDriveStamped)
+  pub = rospy.Publisher('/vesc/low_level/ackermann_cmd_mux/output', AckermannDriveStamped)
   rospy.init_node('keyop')
 
   x = 0
@@ -45,7 +45,7 @@ if __name__=="__main__":
   status = 0
 
   try:
-    while(1):
+    while not rospy.is_shutdown():
        key = getKey()
        if key in keyBindings.keys():
           x = keyBindings[key][0]
